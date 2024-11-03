@@ -35,5 +35,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "notification_id")
     )
     private Set<Notification> notifications;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "preferences_id")
+    private UserPreferences userPreferences;
 }
 
