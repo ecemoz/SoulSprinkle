@@ -2,7 +2,6 @@ package com.yildiz.soulsprinkle.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +30,13 @@ public class Task {
     @JoinColumn(name = "assigned_user_id")
     private User assignedUser;
 
+    @OneToMany(mappedBy = "task")
+    private Set<TaskTag> tasktags;
+
+    @ManyToOne
+    @JoinColumn(name ="category_id")
+    private Category category;
+
     public void completeTask() {
         this.completed = true;
         if (assignedUser != null) {
@@ -48,7 +54,4 @@ public class Task {
             return;
         }
     }
-
-    @OneToMany(mappedBy = "task")
-    private Set<TaskTag> tasktags;
 }

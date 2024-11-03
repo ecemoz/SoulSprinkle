@@ -1,6 +1,5 @@
 package com.yildiz.soulsprinkle.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Set;
