@@ -3,6 +3,7 @@ package com.yildiz.soulsprinkle.model;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.util.Set;
+import com.yildiz.soulsprinkle.model.Notification;
 
 @Data
 @Entity
@@ -24,5 +25,16 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Task> tasks;
+
+    @OneToMany(mappedBy = "assignedUser")
+    private Set<Task> assignedTasks;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_notifications",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "notification_id")
+    )
+    private Set<Notification> notifications;
 }
 
