@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Data
 @Entity
@@ -47,4 +48,7 @@ public class Task {
             return;
         }
     }
+
+    @OneToMany(mappedBy = "task")
+    private Set<TaskTag> tasktags;
 }
