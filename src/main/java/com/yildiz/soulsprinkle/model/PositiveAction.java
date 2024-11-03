@@ -28,5 +28,4 @@ public class PositiveAction {
     @ManyToOne
     @JoinColumn(name = "task_id")
     private Task task;
-    
 }
