@@ -3,7 +3,6 @@ package com.yildiz.soulsprinkle.model;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.util.Set;
-import com.yildiz.soulsprinkle.model.Notification;
 
 @Data
 @Entity
