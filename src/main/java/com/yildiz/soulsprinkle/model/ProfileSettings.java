@@ -1,4 +1,4 @@
 package com.yildiz.soulsprinkle.model;
 
-public class Reminder {
+public class ProfileSettings {
 }
