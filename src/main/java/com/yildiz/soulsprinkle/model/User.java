@@ -35,7 +35,11 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_settings_id", referencedColumnName = "id")
     private ProfileSettings profileSettings;
+
+    @OneToMany
+
 }
+
 
 //      - createdTasks: One-to-Many relationship with Task (creator)
 //      - assignedTasks: Many-to-Many relationship with Task (assignee)
