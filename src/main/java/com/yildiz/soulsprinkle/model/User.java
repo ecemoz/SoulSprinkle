@@ -3,6 +3,7 @@ package com.yildiz.soulsprinkle.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
 @Getter
@@ -36,11 +37,12 @@ public class User {
     @JoinColumn(name = "profile_settings_id", referencedColumnName = "id")
     private ProfileSettings profileSettings;
 
-    @OneToMany
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Task> createdTasks;
 
+    @ManyToMany(mappedBy = "assignees")
+    private List<Task> assignedTasks;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notification> notifications;
 }
-
-
-//      - createdTasks: One-to-Many relationship with Task (creator)
-//      - assignedTasks: Many-to-Many relationship with Task (assignee)
-//      - notifications: One-to-Many relationship with Notification
