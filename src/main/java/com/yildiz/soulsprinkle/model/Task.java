@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -50,6 +49,9 @@ public class Task {
 
     @OneToMany(mappedBy = "relatedTasks" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PositiveAction>positiveActions;
+
+    @OneToMany(mappedBy = "task",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notification> notifications;
 
     public void updateStatus(TaskStatusPreference newStatusPreference) {
         switch (newStatusPreference) {
