@@ -8,5 +8,5 @@ import java.util.Optional;
 @Repository
 public interface PositiveActionRepository extends JpaRepository <PositiveAction,Long>{
 
-    Optional<PositiveAction> findByTaskId(Long taskId);
+    Optional<PositiveAction> findByReleatedTasksId(Long taskId);
 }
