@@ -45,7 +45,7 @@ public class TaskService {
                 })
                 .orElseThrow(() -> new RuntimeException("Task not found"));
     }
-    
+
     public List<Task> getTasksByCreatorId(Long creatorId){
         return taskRepository.findByCreatorId(creatorId);
     }
