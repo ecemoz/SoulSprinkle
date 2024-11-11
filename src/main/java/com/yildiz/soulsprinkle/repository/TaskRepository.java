@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface TaskRepository extends JpaRepository {
+public interface TaskRepository extends JpaRepository<Task,Long> {
 
     List<Task>findByCreatorId(Long creatorId);
 
