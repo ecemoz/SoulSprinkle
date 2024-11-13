@@ -17,7 +17,7 @@ public class NotificationService {
         this.notificationRepository = notificationRepository;
     }
 
-    public Optional<Notification>getNotificationById(long id) {
+    public Optional<Notification>getNotificationById(Long id) {
         return notificationRepository.findById(id);
     }
 
