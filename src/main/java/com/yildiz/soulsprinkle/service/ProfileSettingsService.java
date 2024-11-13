@@ -28,6 +28,18 @@ public class ProfileSettingsService {
         return profileSettingsRepository.save(profileSettings);
     }
 
+    public ProfileSettings updateProfileSettings(Long id , ProfileSettings updatedProfileSettings) {
+    return profileSettingsRepository.findById(id)
+            . map(profileSettings -> {
+            profileSettings.setLanguagePreference(updatedProfileSettings.getLanguagePreference());
+            profileSettings.setThemePreference(updatedProfileSettings.getThemePreference());
+            profileSettings.setNotificationPreference(updatedProfileSettings.getNotificationPreference());
+            profileSettings.setReminderSettings(updatedProfileSettings.isReminderSettings());
+            return profileSettingsRepository.save(profileSettings);
+        })
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
     public void deleteProfileSettingsById(Long id) {
         profileSettingsRepository.deleteById(id);
     }
