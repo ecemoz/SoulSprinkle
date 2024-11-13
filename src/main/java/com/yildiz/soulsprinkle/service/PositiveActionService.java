@@ -24,6 +24,17 @@ public class PositiveActionService {
         return positiveActionRepository.save(positiveAction);
     }
 
+    public PositiveAction updatePositiveActionById(Long id, PositiveAction updatedPositiveAction) {
+        return positiveActionRepository.findById(id)
+                .map (positiveAction -> {
+                    positiveAction.setName(updatedPositiveAction.getName());
+                    positiveAction.setDescription(updatedPositiveAction.getDescription());
+                    positiveAction.setRelatedTasks(updatedPositiveAction.getRelatedTasks());
+                    return positiveActionRepository.save(positiveAction);
+                })
+                .orElseThrow(()-> new RuntimeException("Positive action not found."));
+    }
+
     public void deletePositiveAction (Long taskId) {
         if (positiveActionRepository.existsById(taskId)) {
             positiveActionRepository.deleteById(taskId);
