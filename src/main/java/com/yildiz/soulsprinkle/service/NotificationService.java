@@ -29,6 +29,15 @@ public class NotificationService {
         return notificationRepository.save(notification);
     }
 
+    public Notification updateNotification( Long id , Notification updatedNotification) {
+        return notificationRepository.findById(id)
+                .map(notification -> {
+                    notification.setMessage(updatedNotification.getMessage());
+                    notification.setReadStatus(updatedNotification.getReadStatus());
+                    return notificationRepository.save(notification);
+                })  .orElseThrow(()-> new RuntimeException("Notification not found."));
+    }
+
     public void deleteNotificationById(Long id) {
         if (notificationRepository.existsById(id)) {
             notificationRepository.deleteById(id);
